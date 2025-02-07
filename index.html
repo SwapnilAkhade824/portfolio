@@ -3,154 +3,260 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Swapnil Santosh Akhade - Portfolio</title>
+    <title>Swapnil Akhade | AI/ML Engineer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        * {
             margin: 0;
             padding: 0;
-            background-color: #f4f4f9;
-            color: #333;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
         }
-        .container {
-            max-width: 800px;
-            margin: 50px auto;
-            padding: 20px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
-        }
-        h1, h2, h3 {
-            color: #2c3e50;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 10px;
-        }
-        h2 {
-            font-size: 1.8rem;
-            color: #3498db;
-        }
-        p {
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #fff;
             line-height: 1.6;
-            color: #555;
         }
-        .section {
-            margin: 30px 0;
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
         }
-        .section h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: #2c3e50;
-        }
-        .skills-list, .projects-list {
+
+        .hero-section {
             display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
+            align-items: center;
+            min-height: 100vh;
+            padding: 4rem 0;
         }
-        .skill, .project {
-            background: #3498db;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 5px;
-            font-size: 0.9rem;
+
+        .profile-card {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
         }
-        .project {
-            background: #2ecc71;
+
+        .profile-img {
+            width: 100%;
+            border-radius: 15px;
+            overflow: hidden;
+            position: relative;
+            transition: transform 0.3s ease;
         }
-        .links a {
-            display: inline-block;
-            margin: 10px 5px;
-            padding: 10px 15px;
-            background: #3498db;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
-        .links a:hover {
-            background: #2980b9;
-        }
-        .profile-pic {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin: 20px auto;
+
+        .profile-img img {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
             display: block;
-            border: 4px solid #3498db;
         }
-        .quote {
-            font-style: italic;
-            color: #7f8c8d;
-            text-align: center;
-            margin: 20px 0;
+
+        .profile-img:hover {
+            transform: scale(1.05);
         }
-        .footer {
+
+        .profile-content {
+            padding-left: 2rem;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(45deg, #00b4d8, #90e0ef);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            font-size: 1.2rem;
+            color: #90e0ef;
+            margin-bottom: 2rem;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-links a {
+            color: #fff;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #00b4d8;
+        }
+
+        .section {
+            margin-bottom: 3rem;
+        }
+
+        .section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-left: 1rem;
+        }
+
+        .section h2::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 80%;
+            background: linear-gradient(180deg, #00b4d8, #90e0ef);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 1rem;
+            border-radius: 10px;
             text-align: center;
-            margin-top: 40px;
-            color: #7f8c8d;
-            font-size: 0.9rem;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .project-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateX(10px);
+        }
+
+        .download-btn {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: linear-gradient(45deg, #00b4d8, #90e0ef);
+            color: #fff;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease;
+        }
+
+        .download-btn:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .animated {
+            animation: fadeIn 1s ease forwards;
+        }
+
+        @media (max-width: 768px) {
+            .profile-card {
+                grid-template-columns: 1fr;
+            }
+            
+            .profile-content {
+                padding-left: 0;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <img src="profile_photo.jpg" alt="Profile Picture" class="profile-pic">
-        <h1>Swapnil Santosh Akhade</h1>
-        <h2>AI & ML Enthusiast | Full-Stack Developer</h2>
-        <p class="quote">"Turning data into insights and ideas into reality."</p>
+        <section class="hero-section animated">
+            <div class="profile-card">
+                <div class="profile-img">
+                    <img src="profile_photo.jpg" alt="Swapnil Akhade">
+                </div>
+                
+                <div class="profile-content">
+                    <h1>Swapnil Santosh Akhade</h1>
+                    <p class="tagline">AI/ML Engineer & Full-Stack Developer</p>
+                    
+                    <div class="social-links">
+                        <a href="https://linkedin.com/in/swapnil" target="_blank"><i class="fab fa-linkedin"></i></a>
+                        <a href="https://github.com/swapnil" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="mailto:swapnil@example.com"><i class="fas fa-envelope"></i></a>
+                        <a href="https://medium.com/@swapnil" target="_blank"><i class="fab fa-medium"></i></a>
+                    </div>
 
-        <div class="section">
-            <h3>About Me</h3>
-            <p>I am a passionate Artificial Intelligence and Machine Learning student at MIT Academy of Engineering, Alandi. With a strong foundation in Python, C++, and Data Science, I thrive on solving complex problems and building intelligent systems. I am always eager to learn new technologies and apply them to real-world challenges.</p>
-        </div>
+                    <div class="section">
+                        <h2>About Me</h2>
+                        <p>Innovative AI/ML specialist with expertise in developing intelligent systems and scalable solutions. Currently pursuing AIML at MIT Academy of Engineering, I combine academic knowledge with practical experience to solve real-world challenges through technology.</p>
+                    </div>
 
-        <div class="section">
-            <h3>Skills</h3>
-            <div class="skills-list">
-                <div class="skill">Python</div>
-                <div class="skill">Machine Learning</div>
-                <div class="skill">Deep Learning</div>
-                <div class="skill">TensorFlow</div>
-                <div class="skill">Web Development</div>
-                <div class="skill">C++</div>
-                <div class="skill">Data Science</div>
-                <div class="skill">SQL</div>
-                <div class="skill">Git</div>
+                    <div class="section">
+                        <h2>Core Skills</h2>
+                        <div class="skills-grid">
+                            <div class="skill-item">Deep Learning</div>
+                            <div class="skill-item">Neural Networks</div>
+                            <div class="skill-item">Python</div>
+                            <div class="skill-item">TensorFlow</div>
+                            <div class="skill-item">Data Analysis</div>
+                            <div class="skill-item">Computer Vision</div>
+                        </div>
+                    </div>
+
+                    <a href="#" class="download-btn">Download Resume</a>
+                </div>
             </div>
-        </div>
+        </section>
 
-        <div class="section">
-            <h3>Projects</h3>
-            <div class="projects-list">
-                <div class="project">AI-Powered Chatbot</div>
-                <div class="project">Stock Market Prediction</div>
-                <div class="project">Personal Portfolio Website</div>
-                <div class="project">Image Classification with CNN</div>
-                <div class="project">Sentiment Analysis on Twitter Data</div>
-                <div class="project">Automated Resume Parser</div>
+        <section class="section animated" style="animation-delay: 0.2s;">
+            <h2>Featured Projects</h2>
+            <div class="project-card">
+                <h3>🤖 AI-Powered Healthcare Assistant</h3>
+                <p>Developed a predictive analytics system for early disease detection using CNN and patient data</p>
             </div>
-        </div>
+            <div class="project-card">
+                <h3>📈 Stock Market Predictor</h3>
+                <p>LSTM-based prediction model with 89% accuracy using real-time market data</p>
+            </div>
+            <div class="project-card">
+                <h3>🌐 Smart Education Platform</h3>
+                <p>AI-driven personalized learning system with NLP-based recommendations</p>
+            </div>
+        </section>
 
-        <div class="section">
-            <h3>Experience</h3>
-            <p><strong>AI Intern</strong> at Tech Innovators (June 2024 - Present)</p>
-            <p>Working on developing machine learning models for predictive analytics and natural language processing tasks.</p>
-            <p><strong>Freelance Developer</strong> (2023 - Present)</p>
-            <p>Built custom web applications and AI solutions for clients, including a recommendation system for an e-commerce platform.</p>
-        </div>
-
-        <div class="section links">
-            <h3>Contact & Links</h3>
-            <a href="https://www.linkedin.com/in/swapnil-akhade" target="_blank">LinkedIn</a>
-            <a href="https://github.com/swapnilakhade" target="_blank">GitHub</a>
-            <a href="mailto:swapnil.akhade@example.com">Email</a>
-            <a href="https://medium.com/@swapnilakhade" target="_blank">Blog</a>
-        </div>
-    </div>
-
-    <div class="footer">
-        &copy; 2025 Swapnil Santosh Akhade. All rights reserved.
+        <section class="section animated" style="animation-delay: 0.4s;">
+            <h2>Professional Experience</h2>
+            <div class="project-card">
+                <h3>AI Research Intern @TechGenius (2024)</h3>
+                <p>Developed computer vision models for autonomous vehicle systems</p>
+            </div>
+            <div class="project-card">
+                <h3>ML Engineer @StartUpHub (2023)</h3>
+                <p>Created recommendation systems for e-commerce platforms</p>
+            </div>
+        </section>
     </div>
 </body>
 </html>
