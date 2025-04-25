@@ -1,0 +1,959 @@
+/* ========== BASE STYLES ========== */
+:root {
+    --primary: #2A2F4F;
+    --secondary: #917FB3;
+    --accent: #E5BEEC;
+    --dark: #1A1A2E;
+    --light: #F5F5F5;
+    --gradient: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+    --nav-height: 110px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--light);
+    overflow-x: hidden;
+    padding-top: var(--nav-height); /* Prevent content shift */
+}
+
+/* ========== ANIMATED BACKGROUND ========== */
+.animated-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--gradient);
+    z-index: -2;
+    animation: gradientShift 15s ease infinite;
+}
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* ========== NAVIGATION ========== */
+.glass-nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: var(--nav-height);
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    padding: 1.5rem 2rem;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+}
+
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 800;
+    background: linear-gradient(45deg, #E5BEEC, #917FB3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    transition: transform 0.3s;
+}
+
+.logo:hover {
+    transform: scale(1.2);
+}
+
+.nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 1.1rem;
+    position: relative;
+    transition: color 0.3s;
+}
+
+.nav-links a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s;
+}
+
+.nav-links a:hover::after {
+    width: 100%;
+}
+
+/* ========== HERO SECTION ========== */
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 2rem;
+}
+
+.hero-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+}
+
+.profile-card {
+    position: relative;
+    width: min(400px, 90%);
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+    margin: 0 auto;
+}
+
+.profile-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero-text {
+    color: white;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.animated-text {
+    font-size: clamp(2.5rem, 5vw, 3.5rem);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+    animation: slideIn 1s ease;
+}
+
+.tagline {
+    font-size: clamp(1.25rem, 2.5vw, 1.5rem);
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.career-box {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 2rem;
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ========== VALUES SECTION ========== */
+.values-section {
+    padding: 6rem 2rem;
+    background: white;
+}
+
+.values-grid {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.value-card {
+    background: white;
+    padding: 2rem;
+    border-radius: 15px;
+    text-align: center;
+    transition: transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.value-card:hover {
+    transform: translateY(-10px);
+}
+
+/* ========== ABOUT PAGE ========== */
+.about-container {
+    max-width: 1200px;
+    margin: var(--nav-height) auto 4rem;
+    padding: 0 2rem;
+}
+
+.timeline {
+    border-left: 3px solid var(--secondary);
+    padding-left: 2rem;
+    margin-left: 1rem;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -2.45rem;
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    background: var(--secondary);
+    border-radius: 50%;
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+@media (max-width: 768px) {
+    .hero-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 2rem;
+    }
+
+    .nav-links {
+        display: none;
+    }
+
+    .profile-card {
+        width: min(300px, 90%);
+    }
+
+    .values-section {
+        padding: 4rem 1rem;
+    }
+
+    .about-container {
+        margin-top: calc(var(--nav-height) + 2rem);
+        padding: 0 1rem;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+/* ========== ABOUT PAGE SPECIFIC STYLES ========== */
+.about-container {
+    max-width: 1200px;
+    margin: 100px auto 4rem;
+    padding: 0 2rem;
+}
+
+.section-card {
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    border-radius: 15px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+}
+
+.section-header {
+    border-bottom: 2px solid var(--secondary);
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+}
+
+.section-header h2 {
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    font-size: 2rem;
+}
+
+/* Timeline */
+.timeline {
+    border-left: 3px solid var(--secondary);
+    padding-left: 2rem;
+    margin-left: 1rem;
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -2.45rem;
+    top: 5px;
+    width: 15px;
+    height: 15px;
+    background: var(--secondary);
+    border-radius: 50%;
+}
+
+/* Skills Matrix */
+.skills-matrix {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+.skill-category {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 1.5rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+}
+
+.skill-category:hover {
+    transform: translateY(-5px);
+}
+
+.skill-category h3 {
+    color: var(--primary);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+}
+
+.skill-category ul {
+    list-style: none;
+}
+
+.skill-category li {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+}
+
+/* Testimonials */
+.testimonial-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+.testimonial {
+    background: var(--light);
+    padding: 1.5rem;
+    border-radius: 10px;
+    border-left: 4px solid var(--secondary);
+}
+
+.testimonial footer {
+    margin-top: 1rem;
+    font-style: italic;
+    color: var(--primary);
+    font-weight: 600;
+}
+
+/* ========== PROJECTS PAGE SPECIFIC STYLES ========== */
+/* Existing styles for overall layout and card */
+.projects-container {
+    max-width: 1200px;
+    margin: 100px auto 4rem;
+    padding: 0 2rem;
+}
+
+.project-grid {
+    display: grid;
+    gap: 2rem;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+}
+
+.project-card {
+    background: white; /* Or your card background color */
+    border-radius: 15px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: flex; /* Use flex to arrange media and info */
+    flex-direction: column; /* Stack media above info */
+}
+
+.project-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15); /* Slightly enhanced shadow on hover */
+}
+
+/* Styling for the media container */
+.project-media {
+    position: relative;
+    height: 250px; /* Fixed height as per your original CSS */
+    overflow: hidden;
+    /* Allows absolute positioning of children like project-links */
+}
+
+/* Styling for both Images and Videos within project-media */
+.project-media img,
+.project-media video {
+    display: block; /* Remove extra space below inline elements */
+    width: 100%; /* Make media fill the width of its container */
+    height: 100%; /* Make media fill the height of its container */
+    object-fit: cover; /* Cover the area without distorting aspect ratio */
+    transition: transform 0.3s ease; /* Apply transition to both img and video */
+    /* Ensure videos don't have default borders or outlines */
+    border: none;
+    outline: none;
+}
+
+/* Adjusting the project-links positioning */
+.project-links {
+    position: absolute; /* Position links over the media */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem; /* Increase gap between buttons */
+    opacity: 0; /* Hide links by default */
+    transition: opacity 0.3s ease; /* Smooth transition for visibility */
+    z-index: 1; /* Ensure links are above the media */
+    pointer-events: none; /* Allow clicks to pass through when hidden */
+}
+
+.project-card:hover .project-links {
+    opacity: 1; /* Show links on card hover */
+    pointer-events: all; /* Enable clicks when visible */
+}
+
+
+/* Hover effect for media */
+.project-card:hover .project-media img,
+.project-card:hover .project-media video {
+    transform: scale(1.1); /* Scale up both image and video on hover */
+}
+
+
+.project-info {
+    padding: 1.5rem;
+    flex-grow: 1; /* Allows info section to take up remaining space */
+    display: flex;
+    flex-direction: column;
+}
+
+.project-info h3 {
+    margin-top: 0; /* Remove default top margin */
+    margin-bottom: 0.5rem;
+}
+
+.tech-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 1rem 0;
+}
+
+.tech-stack span {
+    background: var(--accent, #e0e0e0); /* Added a fallback color */
+    color: var(--accent-text, #333); /* Added a fallback color */
+    padding: 0.3rem 1rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    white-space: nowrap; /* Prevent text wrapping in tags */
+}
+
+.project-desc {
+    margin-bottom: 1.5rem;
+    /* Allow description to take available space before links */
+    flex-grow: 1;
+}
+
+.project-links a { /* Targeting links inside project-links */
+    padding: 0.8rem 1.5rem;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease;
+    display: inline-flex; /* Align icon and text */
+    align-items: center;
+    gap: 0.5rem; /* Space between icon and text */
+}
+
+.demo-btn {
+    background: var(--primary, #007bff); /* Added a fallback color */
+    color: white;
+    border: 2px solid var(--primary, #007bff); /* Ensure border matches background */
+}
+
+.code-btn {
+    background: transparent; /* Make code button transparent initially */
+    border: 2px solid var(--primary, #007bff);
+    color: var(--primary, #007bff);
+}
+
+.demo-btn:hover {
+    background: var(--primary-dark, #0056b3); /* Darken background on hover */
+    border-color: var(--primary-dark, #0056b3);
+    transform: translateY(-3px);
+}
+
+.code-btn:hover {
+    background: var(--primary, #007bff); /* Fill background on hover */
+    color: white;
+    transform: translateY(-3px);
+}
+
+/* Optional: Style for the video poster image if the video fails to load */
+.project-media video::-webkit-media-text-track-display {
+    display: none; /* Hide default text track display */
+}
+/* ========== CONTACT PAGE SPECIFIC STYLES ========== */
+/* Existing Contact Section Styles */
+.contact-container {
+    max-width: 1200px;
+    margin: 100px auto 4rem;
+    padding: 0 2rem;
+}
+
+/* Assuming .contact-wrapper might contain both the form and the gallery */
+.contact-wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Adjust as needed, maybe use media queries */
+    gap: 3rem; /* Space between grid items (form and gallery) */
+}
+
+.contact-form {
+    background: rgba(255, 255, 255, 0.9); /* Consider using a CSS variable here */
+    backdrop-filter: blur(10px);
+    padding: 2rem;
+    border-radius: 15px;
+    /* If .contact-wrapper is a grid, this item will be placed by that grid */
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 2px solid #ddd; /* Consider using a CSS variable */
+    border-radius: 10px;
+    font-family: 'Poppins', sans-serif; /* Ensure this font is imported */
+    transition: border-color 0.3s ease;
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: var(--primary, #007bff); /* Added fallback */
+    outline: none;
+}
+
+.submit-btn {
+    background: var(--primary, #007bff); /* Added fallback */
+    color: white; /* Consider using a CSS variable */
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease; /* Added background transition */
+    width: 100%;
+    font-family: 'Poppins', sans-serif; /* Apply font */
+    font-size: 1rem; /* Ensure readable font size */
+}
+
+.submit-btn:hover {
+    transform: translateY(-3px);
+    background-color: var(--primary-dark, #0056b3); /* Darken on hover, added fallback */
+}
+
+.section-header {
+    text-align: center; /* Center the header */
+    margin-bottom: 2rem; /* Space below the header */
+    color: var(--text-color, #333); /* Use a variable for text color */
+}
+
+.section-header h2 {
+     margin: 0; /* Remove default margin */
+     font-size: 2rem; /* Adjust size as needed */
+     color: var(--heading-color, #000); /* Use a variable for heading color */
+}
+
+.section-header i {
+    margin-right: 0.8rem; /* Space between icon and text */
+    color: var(--primary, #007bff); /* Color the icon */
+}
+
+
+/* This is the actual grid container */
+.gallery-grid {
+    display: grid; /* Apply grid display here */
+    gap: 1.5rem; /* Slightly increased gap for better spacing */
+    /* Responsive grid columns */
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjusted min width slightly */
+    align-items: start; /* Align items to the start of their cell */
+}
+
+.media-item {
+    /* No fixed height here is often better for images, but if you want
+       a consistent grid of items with the same height, keep it.
+       Let's keep your fixed height for now as you had it, but ensure media covers it. */
+    height: 220px; /* Slightly increased height */
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Added box-shadow transition */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08); /* Added a subtle shadow */
+    background-color: #f0f0f0; /* Background while media loads */
+}
+
+.media-item:hover {
+    transform: scale(1.03); /* Slightly smaller scale on hover */
+    box-shadow: 0 5px 15px rgba(0,0,0,0.12); /* Enhanced shadow on hover */
+}
+
+.media-item img,
+.media-item video {
+    display: block; /* Removes extra space below inline elements */
+    width: 100%; /* Make media fill the width of the container */
+    height: 100%; /* Make media fill the height of the container */
+    object-fit: cover; /* Crop the media to fit the container while maintaining aspect ratio */
+    /* Ensure videos don't have default borders or outlines */
+    border: none;
+    outline: none;
+}
+
+/* Optional: Style for the video controls if you want to customize them */
+.media-item video::-webkit-media-controls-container {
+    /* Example: Change background of controls */
+    /* background-color: rgba(0, 0, 0, 0.7); */
+    /* filter: invert(1); */
+}
+
+/* Add responsive adjustments if needed */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr; /* Stack form and gallery on smaller screens */
+        gap: 2rem;
+    }
+
+    .gallery-grid {
+        /* On smaller screens, maybe allow smaller min-width */
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+        gap: 1rem;
+    }
+
+    .media-item {
+        height: 180px; /* Adjust height for smaller screens */
+    }
+
+     .section-header h2 {
+        font-size: 1.7rem;
+     }
+}
+
+/* ========== RESPONSIVE ADJUSTMENTS ========== */
+@media (max-width: 768px) {
+    .contact-wrapper {
+        grid-template-columns: 1fr;
+    }
+
+    .project-card {
+        margin-bottom: 2rem;
+    }
+
+    .media-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-card {
+        padding: 1.5rem;
+    }
+
+    .hero {
+        padding: 6rem 1rem 2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .tech-stack span {
+        font-size: 0.8rem;
+    }
+
+    .project-links {
+        flex-direction: column;
+    }
+
+    .media-gallery {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== FOOTER STYLES ===== */
+footer {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(15px);
+    padding: 2rem;
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    text-align: center;
+}
+
+.footer-section {
+    padding: 1rem;
+}
+
+.footer-heading {
+    color: var(--accent);
+    font-size: 1.25rem;
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+.footer-heading::after {
+    content: '';
+    position: absolute;
+    bottom: -0.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 2px;
+    background: var(--secondary);
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin: 0.8rem 0;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: var(--accent);
+    transform: translateX(5px);
+}
+
+.social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.social-icons a {
+    color: white;
+    font-size: 1.5rem;
+    transition: transform 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--accent);
+    transform: translateY(-3px);
+}
+
+.footer-bottom {
+    text-align: center;
+    margin-top: 2rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom p {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Responsive Footer */
+@media (max-width: 768px) {
+    .footer-content {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-section {
+        margin-bottom: 2rem;
+    }
+}
+
+.section-title {
+    text-align: center;
+    width: 100%;
+    margin: 0 auto 4rem;
+    display: block;
+}
+
+.section-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.section-title::before,
+.section-title::after {
+    content: "";
+    width: 40px;
+    height: 3px;
+    background: var(--gradient);
+    border-radius: 2px;
+}
+
+/* Add icon version */
+.section-title i {
+    font-size: 1.2em;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* ========== CERTIFICATES PAGE SPECIFIC STYLES ========== */
+.certificates-container {
+    max-width: 1200px;
+    margin: var(--nav-height) auto 4rem; /* Adjust top margin to clear fixed nav */
+    padding: 0 2rem;
+}
+
+.certificate-grid {
+    display: grid;
+    gap: 2rem; /* Space between certificate cards */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive grid */
+}
+
+.certificate-card {
+    background: white; /* Card background */
+    border-radius: 15px;
+    overflow: hidden; /* Hide anything outside the rounded corners */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column; /* Stack image above info */
+    height: 100%; /* Ensure cards in the same row have similar height */
+}
+
+.certificate-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+}
+
+.certificate-img {
+    width: 100%;
+    height: 200px; /* Fixed height for images, adjust as needed */
+    object-fit: cover; /* Crop image to fit the container */
+    display: block; /* Remove extra space below image */
+    transition: transform 0.3s ease;
+}
+
+.certificate-card:hover .certificate-img {
+    transform: scale(1.05); /* Slightly zoom on hover */
+}
+
+.certificate-info {
+    padding: 1.5rem;
+    flex-grow: 1; /* Allow info section to take up remaining space */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Push button to the bottom */
+}
+
+.certificate-info h3 {
+    margin-top: 0;
+    margin-bottom: 0.5rem;
+    color: var(--primary);
+}
+
+.certificate-info p {
+    margin-bottom: 0.5rem;
+    color: #555; /* A slightly lighter color for text */
+    font-size: 0.95rem;
+}
+
+.issuer {
+    font-style: italic;
+}
+
+.view-certificate-btn {
+    display: inline-block; /* Make the link a block for padding/margin */
+    margin-top: 1rem; /* Space above the button */
+    padding: 0.8rem 1.5rem;
+    background: var(--secondary); /* Button background color */
+    color: white; /* Button text color */
+    text-decoration: none;
+    border-radius: 25px;
+    text-align: center;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    font-weight: 500;
+    display: flex; /* Use flex to center content */
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.view-certificate-btn:hover {
+    background: var(--primary); /* Darken background on hover */
+    transform: translateY(-3px);
+}
+
+/* Responsive adjustments for certificates page */
+@media (max-width: 768px) {
+    .certificates-container {
+        padding: 0 1rem;
+        margin-top: calc(var(--nav-height) + 2rem);
+    }
+
+    .certificate-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust min width for smaller screens */
+        gap: 1.5rem;
+    }
+
+    .certificate-img {
+        height: 180px; /* Adjust image height for smaller screens */
+    }
+
+    .certificate-info {
+        padding: 1rem;
+    }
+
+    .view-certificate-btn {
+        padding: 0.6rem 1.2rem;
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+     .certificate-grid {
+        grid-template-columns: 1fr; /* Stack cards on very small screens */
+        gap: 1rem;
+    }
+
+    .certificate-img {
+        height: 150px; /* Adjust image height for very small screens */
+    }
+}
